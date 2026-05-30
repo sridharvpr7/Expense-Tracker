@@ -57,22 +57,6 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.301);
     }
 
-    .Total:hover {
-        scale: 1.03;
-    }
-
-    .Income:hover {
-        scale: 1.03;
-    }
-
-    .Expense:hover {
-        scale: 1.03;
-    }
-
-    .Saving:hover {
-        scale: 1.03;
-    }
-
     .Total h3 {
         padding: 20px;
         font-size: medium;
@@ -166,14 +150,14 @@
         font-size: large;
     }
 
-    .actionbtnED {
+    .actionbtnS {
         width: 180px;
         height: 50px;
         margin: 5px;
         border-radius: 8px;
         color: white;
-        background-color: rgb(17, 201, 155);
-        border: 1px rgb(17, 201, 155) solid;
+        background-color: blue;
+        border: 1px blue solid;
         font-size: large;
     }
 
@@ -183,8 +167,9 @@
         margin: 5px;
         border-radius: 8px;
         color: white;
-        background-color: blue;
-        border: 1px blue;
+        background-color: rgb(17, 201, 155);
+        border: 1px rgb(17, 201, 155) solid;
+        ;
         font-size: large;
     }
 
@@ -192,15 +177,11 @@
         scale: 0.9;
     }
 
-    .actionbtnI:active .incomeform {
-        visibility: visible;
-    }
-
     .actionbtnE:active {
         scale: 0.9;
     }
 
-    .actionbtnED:active {
+    .actionbtnS:active {
         scale: 0.9;
     }
 
@@ -210,12 +191,14 @@
 
     .transaction {
         margin-top: 50px;
+        background-color: white;
+        border-radius: 10px;
+        margin: 10Px;
+        margin-top: 50px;
+        width: 405px;
     }
 
     .trans {
-        background-color: white;
-        border-radius: 10px;
-        margin: 10px;
         position: relative;
         z-index: 1;
     }
@@ -246,6 +229,16 @@
         display: none;
     }
 
+    .saveform {
+        height: 160px;
+        width: 405px;
+        margin: 10px;
+        margin-top: 300px;
+        background-color: blue;
+        border-radius: 10px;
+        display: none;
+    }
+
     input,
     select {
         width: 375px;
@@ -254,7 +247,7 @@
         border: green 1px solid;
         border-radius: 5px;
         padding-left: 8px;
-        font-size: 15px;    
+        font-size: 15px;
     }
 
     .formtitle {
@@ -281,6 +274,16 @@
         margin-top: 20px;
     }
 
+    .formbtnS {
+        width: 100px;
+        height: 30px;
+        border-radius: 8px;
+        background-color: rgb(72, 72, 247);
+        border: 1px black solid;
+        margin-left: 152.5px;
+        margin-top: 20px;
+    }
+
     .formbtn:active {
         scale: 0.9;
     }
@@ -293,8 +296,9 @@
     th,
     td {
         padding: 15px;
-        border-bottom: 1px solid #ddd;
+        border: 1px solid white;
         text-align: left;
+
     }
 
     tr:hover {

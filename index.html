@@ -21,7 +21,7 @@
                 </a>
 
                 <a>
-                    <button class="navbut" onclick="addtrans()">Dark</button>
+                    <button class="navbut" onclick="reset()">Reset</button>
                     <button class="navbut">Login</button>
                 </a>
             </div>
@@ -41,13 +41,13 @@
             </div>
 
             <div class="Income">
-                <h3>Total balance</h3>
+                <h3>Total income</h3>
                 <p id="income">₹0</p>
             </div>
 
             <div class="Expense">
-                <h3>Total expanse</h3>
-                <p id="expanse">₹0</p>
+                <h3>Total expense</h3>
+                <p id="expense">₹0</p>
             </div>
 
             <div class="Saving">
@@ -65,7 +65,10 @@
             <div class="form">
 
                 <div class="incomeform" id="incomeform">
-                    <p class="formtitle">Title<button style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 320px;" onclick="incomebtn()">X</button></p></p>
+                    <p class="formtitle">Title<button
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 320px;"
+                            onclick="incomebtn()">X</button></p>
+                    </p>
                     <input type="text" placeholder="Enter a income detile">
 
                     <p class="formtitle">Category</p>
@@ -83,12 +86,14 @@
                     <p class="formtitle">Amount</p>
                     <input type="number" placeholder="enter a amount" id="incomeamount">
 
-                    <button class="formbtnI"  onclick="addincome()">Add income</button>
+                    <button class="formbtnI" onclick="addincome()">Add income</button>
                 </div>
 
 
                 <div class="expenseform" id="expenseform">
-                    <p class="formtitle">Title <button style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 320px;" onclick="expensebtn()">X</button></p>
+                    <p class="formtitle">Title <button
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 320px;"
+                            onclick="expensebtn()">X</button></p>
                     <input type="text" placeholder="Enter a expense detile">
 
                     <p class="formtitle">Category</p>
@@ -109,10 +114,21 @@
                     <button class="formbtnE" onclick="addexpense()">Add expense</button>
                 </div>
 
+
+                <div class="saveform" id="saveform">
+
+                    <p class="formtitle">Title <button
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: blue; margin-left: 320px;"
+                            onclick="savebtn()">X</button></p>
+                    <input type="number" placeholder="enter a amount" id="saveamount">
+
+                    <button class="formbtnS" onclick="addsaving()">Save amount</button>
+                </div>
+
             </div>
             <button class="actionbtnI" onclick="incomebtn()">Add income</button>
             <button class="actionbtnE" onclick="expensebtn()">Add expense</button>
-            <button class="actionbtnED">Export data</button>
+            <button class="actionbtnS" onclick="savebtn()">Savings</button>
             <button class="actionbtnA">Analytics</button>
         </div>
     </div>
