@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Calculator.css">
+</head>
+
+<body>
+    <div class="outer">
+        <input type="text" id="screen">
+        <div class="button">
+            <input type="number" id="screen2">
+            <div class="num">
+                <button id="AC" class="clear" onclick="clearscreen()" style="position: relative;">AC<p style="position: absolute; top: 19px; right: 10px;">dlt</p></button>
+                <button id="(" class="oparator" onclick="addnumber('(')">(</button>
+                <button id=")" class="oparator" onclick="addnumber(')')">)</button>
+                <button id="bspc" class="oparator" onclick="backspace()">bspc</button>
+
+                <button id="sqrt" class="oparator" onclick="squre()" style="position: relative;">x²<p style="position: absolute; top: 19px; right: 10px;">s</p></button>
+                <button id="root" class="oparator" onclick=" root()" style="position: relative;">√ <p style="position: absolute; top: 19px; right: 10px;">r</p></button>
+                <button id="%" class="oparator" onclick="addnumber('%')" style="position: relative;">%<p style="position: absolute; top: 19px; right: 10px;">|</p></button>
+                <button id="+" class="oparator" onclick="addnumber('+')">+</button>
+
+                <button id="1" class="numbut" onclick="addnumber(1)">1</button>
+                <button id="2" class="numbut" onclick="addnumber(2)">2</button>
+                <button id="3" class="numbut" onclick="addnumber(3)">3</button>
+                <button id="-" class="oparator" onclick="addnumber('-')">-</button>
+
+                <button id="4" class="numbut" onclick="addnumber(4)">4</button>
+                <button id="5" class="numbut" onclick="addnumber(5)">5</button>
+                <button id="6" class="numbut" onclick="addnumber(6)">6</button>
+                <button id="*" class="oparator" onclick="addnumber('*')">*</button>
+
+                <button id="7" class="numbut" onclick="addnumber(7)">7</button>
+                <button id="8" class="numbut" onclick="addnumber(8)">8</button>
+                <button id="9" class="numbut" onclick="addnumber(9)">9</button>
+                <button id="/" class="oparator" onclick="addnumber('/')">/</button>
+
+                <button id="." class="oparator" onclick="addnumber('.')">.</button>
+                <button id="0" class="numbut" onclick="addnumber(0)">0</button>
+                <button id="00" class="oparator" onclick="addnumber('00')">00</button>
+                <button id="ent" class="equal" onclick="action()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Calculator.js"></script>
+
+</body>
+</html>
