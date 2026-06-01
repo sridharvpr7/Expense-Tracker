@@ -139,7 +139,6 @@ tr:hover {
 .form {
     width: 425px;
     height: 450px;
-    position: absolute;
     top: 20px;
     left: 300px;
     z-index: 2;
@@ -285,89 +284,101 @@ select {
     border-radius: 10px;
 }
 
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 425px) {
 
-    .container{
-        max-width: 425px;
+    .container {
+        width: 100%;
+        overflow-x: hidden;
     }
 
     .dboard {
         width: 100%;
-        height: 100%;
-        flex-direction: column;
     }
 
     .dashboard {
-       display: block;
-       margin-left: 15px;
-    }
-    
-    .dcard{
-        width: 395px;
-        margin-bottom: 15px;
+        display: block;
+        margin: 15px;
     }
 
-    .actionbody{
+    .dcard {
+        width: 395px;
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .dcard p {
+        position: absolute;
+        top: 70px;
+        left: 0;
+    }
+
+    .transaction {
+        margin: 15px;
+    }
+
+    .tblbut {
+        left: 250px;
+    }
+
+    .actionbody {
         top: 520px;
         width: 345px;
     }
 
-    #income{
-        margin-top: 150px;
-    }
-
-    #expense{
-        margin-top: 300px;
-    }
-
-    #saving{
-        margin-top: 450px;
-    }
-
-    .tblbut{
-        position: absolute;
-        left: 250px;
-    }
-
-    .action{
+    .action {
         display: flex;
         position: relative;
     }
 
-    .actionbtn{
-        margin-top: 0px;
+    .actionbtn {
+        width: 80px;
         height: 40px;
+        margin-top: 0;
+        font-size: 14px;
     }
 
-    .actionbtn:active{
+    .actionbtn:active {
         scale: 0.9;
-        border:gold 10px solid;
     }
 
-    .incomeform,.expenseform,.saveform,.guidtransaction{
-        position: absolute  ;
+    .incomeform,
+    .expenseform,
+    .saveform,
+    .guidtransaction {
+        
         top: 40px;
-        right:360px;
+        right: 0;
         width: 365px;
     }
 
-    input{
-        width: 335px;
-    }
-
+    input,
     select {
-        width: 345px;
+        width: calc(100% - 30px);
+        box-sizing: border-box;
     }
 
     .amountrange {
         left: 20px;
         top: 580px;
-        width: 385px;
+        width: calc(100% - 40px);
     }
 
-    .budget{
+    .amountrange input {
+        width: 90%;
+    }
+
+    .budget {
         left: 20px;
         top: 860px;
-        width: 385px;
+        width: calc(100% - 40px);
     }
 }
