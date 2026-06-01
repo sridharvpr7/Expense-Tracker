@@ -9,8 +9,8 @@
 </head>
 
 <body>
-
-    <!--header-->
+<div class="container">
+    <!--Header-->
 
     <div class="bodyy">
 
@@ -29,110 +29,35 @@
 
     </div>
 
-    <!--dashboard-->
+    <!--Dashboard-->
 
     <div class="dboard">
 
         <div class="dashboard">
 
-            <div class="Total">
+            <div class="dcard">
                 <h3>Total balance</h3>
-                <p id="balance">₹0</p>
+                <p id="balance" style="color: black;">₹0</p>
             </div>
 
-            <div class="Income">
+            <div class="dcard">
                 <h3>Total income</h3>
-                <p id="income">₹0</p>
+                <p id="income" style="color: green;">₹0</p>
             </div>
 
-            <div class="Expense">
+            <div class="dcard">
                 <h3>Total expense</h3>
-                <p id="expense">₹0</p>
+                <p id="expense" style="color: red;">₹0</p>
             </div>
 
-            <div class="Saving">
+            <div class="dcard">
                 <h3>Total saving</h3>
-                <p id="saving">₹0</p>
+                <p id="saving" style="color: blue;">₹0</p>
             </div>
 
         </div>
+
     </div>
-
-    <!--actions-->
-
-    <div class="actionbody" style="margin-top: 380px;">
-        <div class="action">
-            <div class="form">
-
-                <div class="incomeform" id="incomeform">
-                    <p class="formtitle">Title<button
-                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 320px;"
-                            onclick="incomebtn()">X</button></p>
-                    </p>
-                    <input type="text" placeholder="Enter a income detile">
-
-                    <p class="formtitle">Category</p>
-                    <select name="" id="">
-                        <option value="">select</option>
-                        <option value="">food</option>
-                        <option value="">trnspoart</option>
-                        <option value="">invertsment</option>
-                        <option value="">others</option>
-                    </select>
-
-                    <p class="formtitle">Time</p>
-                    <input type="date">
-
-                    <p class="formtitle">Amount</p>
-                    <input type="number" placeholder="enter a amount" id="incomeamount">
-
-                    <button class="formbtnI" onclick="addincome()">Add income</button>
-                </div>
-
-
-                <div class="expenseform" id="expenseform">
-                    <p class="formtitle">Title <button
-                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 320px;"
-                            onclick="expensebtn()">X</button></p>
-                    <input type="text" placeholder="Enter a expense detile">
-
-                    <p class="formtitle">Category</p>
-                    <select name="" id="">
-                        <option value="">select</option>
-                        <option value="">food</option>
-                        <option value="">trnspoart</option>
-                        <option value="">invertsment</option>
-                        <option value="">others</option>
-                    </select>
-
-                    <p class="formtitle">Time</p>
-                    <input type="date">
-
-                    <p class="formtitle">Amount</p>
-                    <input type="number" placeholder="enter a amount" id="expeseamount">
-
-                    <button class="formbtnE" onclick="addexpense()">Add expense</button>
-                </div>
-
-
-                <div class="saveform" id="saveform">
-
-                    <p class="formtitle">Title <button
-                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: blue; margin-left: 320px;"
-                            onclick="savebtn()">X</button></p>
-                    <input type="number" placeholder="enter a amount" id="saveamount">
-
-                    <button class="formbtnS" onclick="addsaving()">Save amount</button>
-                </div>
-
-            </div>
-            <button class="actionbtnI" onclick="incomebtn()">Add income</button>
-            <button class="actionbtnE" onclick="expensebtn()">Add expense</button>
-            <button class="actionbtnS" onclick="savebtn()">Savings</button>
-            <button class="actionbtnA">Analytics</button>
-        </div>
-    </div>
-
 
     <!--Transactions-->
 
@@ -153,21 +78,148 @@
         </div>
     </div>
 
+    <!--Actions-->
+
+    <div class="actionbody" style="margin-top: 380px;">
+        <div class="action">
+            <div class="form">
+
+                <div class="guidtransaction" id="guidtransaction">
+                    ADD<br>TRANSACTION
+                </div>
+
+                <div class="incomeform" id="incomeform" style="background-color: rgb(90, 241, 44);">
+                    <p class="formtitle">Title<button
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 290px;"
+                            onclick="incomebtn()">X</button></p>
+                    </p>
+                    <input type="text" placeholder="Enter a income detile" style="border: rgb(90, 241, 44) 1px solid;">
+
+                    <p class="formtitle">Category</p>
+                    <select name="" id="" style="border: rgb(90, 241, 44) 1px solid;">
+                        <option value="">select</option>
+                        <option value="">food</option>
+                        <option value="">trnspoart</option>
+                        <option value="">invertsment</option>
+                        <option value="">others</option>
+                    </select>
+
+                    <p class="formtitle">Time</p>
+                    <input type="date" style="border: rgb(90, 241, 44) 1px solid;">
+
+                    <p class="formtitle">Amount</p>
+                    <input type="number" placeholder="enter a amount" id="incomeamount" style="border: rgb(90, 241, 44) 1px solid;">
+
+                    <button class="formbtn" onclick="addincome()" style="background-color: rgb(123, 252, 123); margin-left: 132.25px">Add income</button>
+                </div>
+
+
+                <div class="expenseform" id="expenseform" style="background-color: rgb(236, 52, 52);">
+                    <p class="formtitle">Title <button
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 285px;"
+                            onclick="expensebtn()">X</button></p>
+                    <input type="text" placeholder="Enter a expense detile" style="border: rgb(236, 52, 52) 1px solid;">
+
+                    <p class="formtitle">Category</p>
+                    <select name="" id="" style="border: rgb(236, 52, 52) 1px solid;">
+                        <option value="">select</option>
+                        <option value="">food</option>
+                        <option value="">trnspoart</option>
+                        <option value="">invertsment</option>
+                        <option value="">others</option>
+                    </select>
+
+                    <p class="formtitle">Time</p>
+                    <input type="date" style="border: rgb(236, 52, 52) 1px solid;">
+
+                    <p class="formtitle">Amount</p>
+                    <input type="number" placeholder="enter a amount" id="expeseamount" style="border: rgb(236, 52, 52) 1px solid;">
+
+                    <button class="formbtn" onclick="addexpense()" style="background-color: red;  margin-left: 132.25px">Add expense</button>
+                </div>
+
+
+                <div class="saveform" id="saveform" style="background-color: blue;">
+
+                    <p class="formtitle">Title <button style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: blue; margin-left: 285px;" onclick="savebtn()">X</button></p>
+                    <input type="number" placeholder="enter a amount" id="saveamount" style=" border: blue 1px solid">
+
+                    <button class="formbtn" onclick="addsaving()" style="background-color: rgb(72, 72, 247); margin-left: 132.25px">Save
+                        amount</button>
+                </div>
+
+            </div>
+            <button class="actionbtn" id="actionbtnI" onclick="incomebtn()"
+                style="background-color: green; border: 1px green solid;">income</button> <br>
+            <button class="actionbtn" id="actionbtnE" onclick="expensebtn()"
+                style="background-color: red; border: 1px red solid;">expense</button> <br>
+            <button class="actionbtn" id="actionbtnS" onclick="savebtn()"
+                style="background-color: blue; border: 1px blue solid;">Savings</button> <br>
+            <button class="actionbtn" id="actionbtnA"
+                style="background-color: rgb(161, 204, 42); border: 1px rgb(161, 204, 42) solid;">Analytics</button>
+            <br>
+        </div>
+    </div>
+
+    <!--Analysis-->
+    <div class="range" style="position: relative;">
+        <div class="amountrange">
+            <p class="p1">Balance: <p id="balper" style="color: black;">0%</p></p>
+            <input type="range" id="rgbalance" min="0" max="100" style="accent-color: black;">
+
+            <p class="p2">Expense: <p id="expper" style="color: red;">0%</p></p>
+            <input type="range" id="rgexpense" min="0" max="100" style="accent-color: red;">
+
+            <p class="p3">Saving: <p id="savper" style="color: blue;">0%</p></p>
+            <input type="range" id="rgsaving" min="0" max="100" style="accent-color: blue;">
+        </div>
+    </div>
+
+    <!--Budget-->
+
+    <div style="position: relative;">
+        <div class="budget">
+            
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="extrack.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
     <p style="margin-top: 1234px;">123456</p>
+</div>
 </body>
 
 </html>

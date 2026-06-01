@@ -1,318 +1,373 @@
-    * {
-        padding: 0px;
-        margin: 0px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    body {
-        background-color: #e7ebff;
-        position: relative;
-    }
+body {
+    background-color: #e7ebff;
+    position: relative;
+}
 
-    .header {
-        margin: 10px;
-        width: 395px;
-        height: 50px;
-        background-color: white;
-        border-radius: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 5px;
-    }
+.header {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .navbut {
-        width: 50px;
-        height: 25px;
-        margin-right: 5px;
-        border-radius: 5px;
-        background-color: rgb(255, 0, 0);
-        color: white;
-        border: 1px red solid;
-    }
+.navbut {
+    width: 70px;
+    height: 35px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border: 1px red solid;
+}
 
-    .navbut:active {
-        scale: 0.9;
+.navbut:active {
+    scale: 0.9;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    position: relative;
+}
+
+.dcard {
+    width: 400px;
+    height: 130px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.dcard h3 {
+    padding: 30px;
+    color: rgb(143, 143, 255);
+    font-size: 20px;
+}
+
+.dcard p {
+    position: absolute;
+    top: 70px;
+    padding-left: 40px;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.transaction {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.trans {
+    position: relative;
+}
+
+.tblbut {
+    position: absolute;
+    top: 10px;
+    left: 295px;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: 1px black solid;
+    color: white;
+    background-color: black;
+}
+
+table {
+    width: 100%;
+
+}
+
+th {
+    padding: 15px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 8px;
+}
+
+td {
+    padding: 15px;
+    border: 1px solid white;
+    text-align: left;
+    border-radius: 8px;
+}
+
+tr:hover {
+    background: #f5f5f5;
+}
+
+.actionbody {
+    position: absolute;
+    top: 100px;
+    width: 720px;
+    height: 490px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.action {
+    position: relative;
+}
+
+.actionbtn {
+    width: 180px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 8px;
+    color: white;
+    font-size: large;
+    margin-top: 55px;
+}
+
+.form {
+    width: 425px;
+    height: 450px;
+    position: absolute;
+    top: 20px;
+    left: 300px;
+    z-index: 2;
+}
+
+.guidtransaction {
+    height: 430px;
+    width: 405px;
+    margin: 10px;
+    font-family: cursive;
+    display: flex;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 150px;
+    border-radius: 10px;
+}
+
+.incomeform {
+    height: 430px;
+    width: 405px;
+    margin: 10px;
+    background-color: rgb(90, 241, 44);
+    border-radius: 10px;
+    display: none;
+}
+
+.expenseform {
+    height: 430px;
+    width: 405px;
+    margin: 10px;
+    background-color: rgb(236, 52, 52);
+    border-radius: 10px;
+    display: none;
+}
+
+.saveform {
+    height: 160px;
+    width: 405px;
+    margin: 10px;
+    margin-top: 145px;
+    background-color: blue;
+    border-radius: 10px;
+    display: none;
+}
+
+input,
+select {
+    width: 375px;
+    margin: 10px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 8px;
+    font-size: 15px;
+}
+
+.formtitle {
+    padding: 10px;
+}
+
+.formbtn {
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px black solid;
+    margin-left: 152.5px;
+    margin-top: 20px;
+}
+
+.formbtn:active {
+    scale: 0.9;
+}
+
+.amountrange {
+    position: absolute;
+    top: 27px;
+    left: 800px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 250px;
+    width: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.amountrange input {
+    width: 1000px;
+}
+
+.p1 {
+    position: absolute;
+    left: 50px;
+    top: 9px;
+    font-size: 20px;
+}
+
+.p2 {
+    position: absolute;
+    left: 50px;
+    top: 92px;
+    font-size: 20px;
+}
+
+.p3 {
+    position: absolute;
+    left: 50px;
+    top: 175px;
+    font-size: 20px;
+}
+
+#balper {
+    position: absolute;
+    top: 9px;
+    font-size: 20px;
+    right: 5%;
+}
+
+#expper {
+    position: absolute;
+    top: 92px;
+    font-size: 20px;
+    right: 5%;
+}
+
+#savper {
+    position: absolute;
+    top: 175px;
+    font-size: 20px;
+    right: 5%;
+}
+
+.budget {
+    position: absolute;
+    top: 305px;
+    left: 800px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    width: 1080px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 425px) {
+
+    .container{
+        max-width: 425px;
     }
 
     .dboard {
-        display: flex;
-        width: 425px;
-        height: 300px;
-        justify-content: center;
-        margin-top: 35px;
-    }
-
-    .Total,
-    .Income,
-    .Expense,
-    .Saving {
-        background-color: white;
-        width: 385px;
-        height: 130px;
-        margin-top: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.301);
-    }
-
-    .Total h3 {
-        padding: 20px;
-        font-size: medium;
-        color: rgb(136, 136, 218);
-    }
-
-    .Income h3 {
-        padding: 20px;
-        font-size: medium;
-        color: rgb(136, 136, 218);
-    }
-
-    .Expense h3 {
-        padding: 20px;
-        font-size: medium;
-        color: rgb(136, 136, 218);
-    }
-
-    .Saving h3 {
-        padding: 20px;
-        font-size: medium;
-        color: rgb(136, 136, 218);
-    }
-
-    .Total p {
-        padding-left: 20px;
-        color: black;
-        font-size: 30px;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
-
-    .Income p {
-        padding-left: 20px;
-        color: green;
-        font-size: 30px;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
-
-    .Expense p {
-        padding-left: 20px;
-        color: red;
-        font-size: 30px;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
-
-    .Saving p {
-        padding-left: 20px;
-        color: rgb(38, 38, 226);
-        font-size: 30px;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
-
-    .actionbody {
-        width: 400px;
-        height: 180px;
-        display: flex;
-        padding: 12.5px;
-    }
-
-    .action {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-        height: 180px;
-        background-color: white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.301);
-        border-radius: 10px;
-        padding: 5px;
-    }
-
-    .actionbtnI {
-        width: 180px;
-        height: 50px;
-        margin: 5px;
-        border-radius: 8px;
-        color: white;
-        background-color: green;
-        border: 1px green solid;
-        font-size: large;
-    }
-
-    .actionbtnE {
-        width: 180px;
-        height: 50px;
-        margin: 5px;
-        border-radius: 8px;
-        color: white;
-        background-color: red;
-        border: 1px red solid;
-        font-size: large;
-    }
-
-    .actionbtnS {
-        width: 180px;
-        height: 50px;
-        margin: 5px;
-        border-radius: 8px;
-        color: white;
-        background-color: blue;
-        border: 1px blue solid;
-        font-size: large;
-    }
-
-    .actionbtnA {
-        width: 180px;
-        height: 50px;
-        margin: 5px;
-        border-radius: 8px;
-        color: white;
-        background-color: rgb(17, 201, 155);
-        border: 1px rgb(17, 201, 155) solid;
-        ;
-        font-size: large;
-    }
-
-    .actionbtnI:active {
-        scale: 0.9;
-    }
-
-    .actionbtnE:active {
-        scale: 0.9;
-    }
-
-    .actionbtnS:active {
-        scale: 0.9;
-    }
-
-    .actionbtnA:active {
-        scale: 0.9;
-    }
-
-    .transaction {
-        margin-top: 50px;
-        background-color: white;
-        border-radius: 10px;
-        margin: 10Px;
-        margin-top: 50px;
-        width: 405px;
-    }
-
-    .trans {
-        position: relative;
-        z-index: 1;
-    }
-
-    .form {
-        width: 425px;
-        height: 450px;
-        position: absolute;
-        top: 300px;
-        z-index: 2;
-    }
-
-    .incomeform {
-        height: 430px;
-        width: 405px;
-        margin: 10px;
-        background-color: rgb(90, 241, 44);
-        border-radius: 10px;
-        display: none;
-    }
-
-    .expenseform {
-        height: 430px;
-        width: 405px;
-        margin: 10px;
-        background-color: rgb(236, 52, 52);
-        border-radius: 10px;
-        display: none;
-    }
-
-    .saveform {
-        height: 160px;
-        width: 405px;
-        margin: 10px;
-        margin-top: 300px;
-        background-color: blue;
-        border-radius: 10px;
-        display: none;
-    }
-
-    input,
-    select {
-        width: 375px;
-        margin: 10px;
-        height: 30px;
-        border: green 1px solid;
-        border-radius: 5px;
-        padding-left: 8px;
-        font-size: 15px;
-    }
-
-    .formtitle {
-        padding: 10px;
-    }
-
-    .formbtnI {
-        width: 100px;
-        height: 30px;
-        border-radius: 8px;
-        background-color: rgb(123, 252, 123);
-        border: 1px black solid;
-        margin-left: 152.5px;
-        margin-top: 20px;
-    }
-
-    .formbtnE {
-        width: 100px;
-        height: 30px;
-        border-radius: 8px;
-        background-color: red;
-        border: 1px black solid;
-        margin-left: 152.5px;
-        margin-top: 20px;
-    }
-
-    .formbtnS {
-        width: 100px;
-        height: 30px;
-        border-radius: 8px;
-        background-color: rgb(72, 72, 247);
-        border: 1px black solid;
-        margin-left: 152.5px;
-        margin-top: 20px;
-    }
-
-    .formbtn:active {
-        scale: 0.9;
-    }
-
-    table {
         width: 100%;
-
+        height: 100%;
+        flex-direction: column;
     }
 
-    th,
-    td {
-        padding: 15px;
-        border: 1px solid white;
-        text-align: left;
-
+    .dashboard {
+       display: block;
+       margin-left: 15px;
+    }
+    
+    .dcard{
+        width: 395px;
+        margin-bottom: 15px;
     }
 
-    tr:hover {
-        background: #f5f5f5;
+    .actionbody{
+        top: 520px;
+        width: 345px;
     }
 
-    .tblbut {
+    #income{
+        margin-top: 150px;
+    }
+
+    #expense{
+        margin-top: 300px;
+    }
+
+    #saving{
+        margin-top: 450px;
+    }
+
+    .tblbut{
         position: absolute;
-        top: 10px;
-        left: 295px;
-        height: 40px;
-        width: 100px;
-        border-radius: 10px;
-        border: 1px black solid;
-        color: white;
-        background-color: black;
+        left: 250px;
     }
+
+    .action{
+        display: flex;
+        position: relative;
+    }
+
+    .actionbtn{
+        margin-top: 0px;
+        height: 40px;
+    }
+
+    .actionbtn:active{
+        scale: 0.9;
+        border:gold 10px solid;
+    }
+
+    .incomeform,.expenseform,.saveform,.guidtransaction{
+        position: absolute  ;
+        top: 40px;
+        right:360px;
+        width: 365px;
+    }
+
+    input{
+        width: 335px;
+    }
+
+    select {
+        width: 345px;
+    }
+
+    .amountrange {
+        left: 20px;
+        top: 580px;
+        width: 385px;
+    }
+
+    .budget{
+        left: 20px;
+        top: 860px;
+        width: 385px;
+    }
+}
