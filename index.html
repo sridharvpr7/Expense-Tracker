@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="container">
+
     <!--Header-->
 
     <div class="bodyy">
@@ -21,7 +21,7 @@
                 </a>
 
                 <a>
-                    <button class="navbut" onclick="reset()">Reset</button>
+                    <button class="navbut" onclick="resetdata()">Reset</button>
                     <button class="navbut">Login</button>
                 </a>
             </div>
@@ -59,28 +59,9 @@
 
     </div>
 
-    <!--Transactions-->
-
-    <div class="transaction">
-        <div class="trans">
-            <h2 style="padding-left: 20px;">Recent<br>Transactions</h2><br>
-            <button class="tblbut">Add trasaction</button>
-            <table>
-
-                <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                </tr>
-
-            </table>
-        </div>
-    </div>
-
     <!--Actions-->
 
-    <div class="actionbody" style="margin-top: 380px;">
+    <div class="actionbody">
         <div class="action">
             <div class="form">
 
@@ -90,62 +71,88 @@
 
                 <div class="incomeform" id="incomeform" style="background-color: rgb(90, 241, 44);">
                     <p class="formtitle">Title<button
-                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 290px;"
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: rgb(90, 241, 44);;margin-left: 330px;"
                             onclick="incomebtn()">X</button></p>
                     </p>
-                    <input type="text" placeholder="Enter a income detile" style="border: rgb(90, 241, 44) 1px solid;">
+                    <input type="text" placeholder="Enter a income detile" style="border: rgb(90, 241, 44) 1px solid;"
+                        id="intitle">
 
                     <p class="formtitle">Category</p>
-                    <select name="" id="" style="border: rgb(90, 241, 44) 1px solid;">
-                        <option value="">select</option>
-                        <option value="">food</option>
-                        <option value="">trnspoart</option>
-                        <option value="">invertsment</option>
-                        <option value="">others</option>
+                    <select style="border: rgb(90, 241, 44) 1px solid; width: 385px;" id="incategory">
+                        <option>select</option>
+                        <option>food</option>
+                        <option>trnspoart</option>
+                        <option>invertsment</option>
+                        <option>others</option>
                     </select>
 
-                    <p class="formtitle">Time</p>
-                    <input type="date" style="border: rgb(90, 241, 44) 1px solid;">
+                    <p class="formtitle">Date</p>
+                    <input type="datetime-local" style="border: rgb(90, 241, 44) 1px solid;" id="indate">
 
                     <p class="formtitle">Amount</p>
-                    <input type="number" placeholder="enter a amount" id="incomeamount" style="border: rgb(90, 241, 44) 1px solid;">
+                    <input type="number" placeholder="enter a amount" id="incomeamount"
+                        style="border: rgb(90, 241, 44) 1px solid;">
 
-                    <button class="formbtn" onclick="addincome()" style="background-color: rgb(123, 252, 123); margin-left: 132.25px">Add income</button>
+                    <button class="formbtn" onclick="addincometotable(); addincome();"
+                        style="background-color: rgb(123, 252, 123); margin-left: 152.25px">Add income</button>
                 </div>
 
 
                 <div class="expenseform" id="expenseform" style="background-color: rgb(236, 52, 52);">
                     <p class="formtitle">Title <button
-                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 285px;"
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 320px;"
                             onclick="expensebtn()">X</button></p>
-                    <input type="text" placeholder="Enter a expense detile" style="border: rgb(236, 52, 52) 1px solid;">
+
+                    <input type="text" placeholder="Enter a saving detile" style="border: rgb(236, 52, 52) 1px solid;"
+                        id="extitle">
 
                     <p class="formtitle">Category</p>
-                    <select name="" id="" style="border: rgb(236, 52, 52) 1px solid;">
-                        <option value="">select</option>
-                        <option value="">food</option>
-                        <option value="">trnspoart</option>
-                        <option value="">invertsment</option>
-                        <option value="">others</option>
+                    <select style="border: rgb(236, 52, 52) 1px solid; width: 385px;" id="excategory">
+                        <option>select</option>
+                        <option>food</option>
+                        <option>trnspoar t</option>
+                        <option>invertsment</option>
+                        <option>others</option>
                     </select>
 
-                    <p class="formtitle">Time</p>
-                    <input type="date" style="border: rgb(236, 52, 52) 1px solid;">
+                    <p class="formtitle">Date</p>
+                    <input type="datetime-local" style="border: rgb(236, 52, 52) 1px solid;" id="exdate">
 
                     <p class="formtitle">Amount</p>
-                    <input type="number" placeholder="enter a amount" id="expeseamount" style="border: rgb(236, 52, 52) 1px solid;">
+                    <input type="number" placeholder="enter a amount" id="examount"
+                        style="border: rgb(236, 52, 52) 1px solid;">
 
-                    <button class="formbtn" onclick="addexpense()" style="background-color: red;  margin-left: 132.25px">Add expense</button>
+                    <button class="formbtn" onclick="addexpensetotable(); addexpense();"
+                        style="background-color: red;  margin-left: 152.25px">Add expense</button>
                 </div>
 
 
                 <div class="saveform" id="saveform" style="background-color: blue;">
 
-                    <p class="formtitle">Title <button style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: blue; margin-left: 285px;" onclick="savebtn()">X</button></p>
-                    <input type="number" placeholder="enter a amount" id="saveamount" style=" border: blue 1px solid">
+                    <p class="formtitle">Title<button
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 330px;"
+                            onclick="savebtn()">X</button></p>
+                    </p>
+                    <input type="text" placeholder="Enter a income detile" style="border: blue 1px solid;"
+                        id="savetitle">
 
-                    <button class="formbtn" onclick="addsaving()" style="background-color: rgb(72, 72, 247); margin-left: 132.25px">Save
-                        amount</button>
+                    <p class="formtitle">Category</p>
+                    <select style="border: blue 1px solid; width: 385px;" id="savecategory">
+                        <option>select</option>
+                        <option>food</option>
+                        <option>trnspoart</option>
+                        <option>invertsment</option>
+                        <option>others</option>
+                    </select>
+
+                    <p class="formtitle">Date</p>
+                    <input type="datetime-local" style="border: blue 1px solid;" id="savedate">
+
+                    <p class="formtitle">Amount</p>
+                    <input type="number" placeholder="enter a amount" id="saveamount" style="border: blue 1px solid;">
+
+                    <button class="formbtn" onclick="addsavetotable(); addsaving();"
+                        style="background-color: blue ; margin-left: 152.25px">Add income</button>
                 </div>
 
             </div>
@@ -162,64 +169,97 @@
     </div>
 
     <!--Analysis-->
+
     <div class="range" style="position: relative;">
         <div class="amountrange">
-            <p class="p1">Balance: <p id="balper" style="color: black;">0%</p></p>
-            <input type="range" id="rgbalance" min="0" max="100" style="accent-color: black;">
+            <p class="p1">Balance:
+            <p id="balper" style="color: black;">0%</p>
+            </p>
+            <input type="range" id="rgbalance" min="0" max="100" style="accent-color: black; pointer-events: none;">
 
-            <p class="p2">Expense: <p id="expper" style="color: red;">0%</p></p>
-            <input type="range" id="rgexpense" min="0" max="100" style="accent-color: red;">
+            <p class="p2">Expense:
+            <p id="expper" style="color: red;">0%</p>
+            </p>
+            <input type="range" id="rgexpense" min="0" max="100" style="accent-color: red; pointer-events: none;">
 
-            <p class="p3">Saving: <p id="savper" style="color: blue;">0%</p></p>
-            <input type="range" id="rgsaving" min="0" max="100" style="accent-color: blue;">
+            <p class="p3">Saving:
+            <p id="savper" style="color: blue;">0%</p>
+            </p>
+            <input type="range" id="rgsaving" min="0" max="100" style="accent-color: blue; pointer-events: none;">
         </div>
     </div>
 
-    <!--Budget-->
+    <!-- Budget -->
 
     <div style="position: relative;">
-        <div class="budget">
-            
+
+        <div class="budgetbody">
+            <h2>Budget Planner <button class="budreset" onclick="budgetreset()">Reset</button> </h2>
+            <label>Monthly Budget</label><br>
+
+            <input type="number" id="budgetamount" placeholder="Enter budget"><br>
+
+            <button class="addbut" onclick="savebudget()">
+                Save Budget
+            </button>
+
+            <h3>
+                Budget: ₹<span id="showbudget">0</span>
+            </h3>
+
+            <h3>
+                Remaining: ₹<span id="remainbudget">0</span>
+            </h3>
+
+            <p id="budper" style=" position: absolute; top: 180px; left: 400px;">0%</p>
+            <input type="range" min="0" max="100" id="budmeter"
+                style="accent-color: rgb(248, 190, 102); pointer-events: none; width: 200px; position: absolute; top: 180px; left: 220px;">
         </div>
     </div>
 
 
+    <!--Goal-->
 
 
+    <div style="position: relative;">
+        <div class="target">
+            <div style="display: flex; justify-content: space-between;">
+               <h3>Goals</h3> <button class="goalbut" id="goalbut" onclick="addgoal()">Add goal</button>
+            </div>
+            <div class="targets">
+                <p style="font-family: cursive; font-size: 50px; display: flex;justify-content: center; align-items: center;">ADD GOALS</p>
+                <table>
+                    <tbody id="goalrange"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
+    <!--Transactions-->
 
+    <div class="transaction">
+        <div class="trans">
+            <h2 style="padding-left: 20px;">Recent<br>Transactions</h2><br>
+            <button class="tblbut">Add trasaction</button>
+            <table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <thead>
+                    <tr>
+                        <th style="width: 600px;">Title</th>
+                        <th style="width: 100px;">Category</th>
+                        <th style="width: 100px;">Date</th>
+                        <th style="width: 100px;">Amount</th>
+                        <th style="width: 100px;">Delete</th>
+                    </tr>
+                </thead id="ls">
+                <tbody id="transactions"></tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="extrack.js"></script>
-    <p style="margin-top: 1234px;">123456</p>
-</div>
+
 </body>
 
 </html>
