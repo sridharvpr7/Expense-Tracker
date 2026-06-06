@@ -89,9 +89,9 @@
                     <p class="formtitle">Date</p>
                     <input type="datetime-local" style="border: rgb(90, 241, 44) 1px solid;" id="indate">
 
-                    <p class="formtitle">Amount</p>
+                    <p class="formtitle">Amount <span style="color: red;">*</span></p>
                     <input type="number" placeholder="enter a amount" id="incomeamount"
-                        style="border: rgb(90, 241, 44) 1px solid;">
+                        style="border: rgb(90, 241, 44) 1px solid;" required>
 
                     <button class="formbtn" onclick="addincometotable(); addincome();"
                         style="background-color: rgb(123, 252, 123); margin-left: 152.25px">Add income</button>
@@ -100,7 +100,7 @@
 
                 <div class="expenseform" id="expenseform" style="background-color: white;">
                     <p class="formtitle">Title <button
-                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 320px;"
+                            style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 325.50px;"
                             onclick="closeForms()">X</button></p>
 
                     <input type="text" placeholder="Enter a saving detile" style="border: rgb(236, 52, 52) 1px solid;"
@@ -120,7 +120,8 @@
                     <p class="formtitle">Date</p>
                     <input type="datetime-local" style="border: rgb(236, 52, 52) 1px solid;" id="exdate">
 
-                    <p class="formtitle">Amount</p>
+                    <p class="formtitle">Amount <span style="color: red;">*</span></p>
+                    </p>
                     <input type="number" placeholder="enter a amount" id="examount"
                         style="border: rgb(236, 52, 52) 1px solid;">
 
@@ -150,7 +151,7 @@
                     <p class="formtitle">Date</p>
                     <input type="datetime-local" style="border: blue 1px solid;" id="savedate">
 
-                    <p class="formtitle">Amount</p>
+                    <p class="formtitle">Amount <span style="color: red;">*</span></p>
                     <input type="number" placeholder="enter a amount" id="saveamount" style="border: blue 1px solid;">
 
                     <button class="formbtn" onclick="addsavetotable(); addsaving();"
@@ -164,7 +165,7 @@
                 style="background-color: red; border: 1px red solid;">expense</button> <br>
             <button class="actionbtn" id="actionbtnS" onclick="savebtn()"
                 style="background-color: blue; border: 1px blue solid;">Savings</button> <br>
-            <button class="actionbtn" id="actionbtnA"  onclick="location.href='#anger'"
+            <button class="actionbtn" id="actionbtnA" onclick="location.href='#anger'"
                 style="background-color: rgb(161, 204, 42); border: 1px rgb(161, 204, 42) solid;">Analytics</button>
             <br>
         </div>
@@ -213,10 +214,10 @@
                 Remaining: ₹<span id="remainbudget">0</span>
             </h3>
 
-            <p id="budper" style=" position: absolute; top: 180px; left: 380px;">₹0/₹0 0%</p>
+            <p id="budper" style=" position: absolute; top: 180px; left: 380px;">0%</p>
             <input type="range" min="0" max="100" id="budmeter"
                 style="accent-color: rgb(248, 190, 102); pointer-events: none; width: 200px; position: absolute; top: 180px; left: 220px;">
-                <h3 id="budgetstatus" style="position: absolute;top: 210px;left: 240px;">statuse</h3>
+            <h3 id="budgetstatus" style="position: absolute;top: 210px;left: 240px; font-size: medium;">statuse</h3>
         </div>
     </div>
 
@@ -246,10 +247,10 @@
             <h2 style="padding-left: 20px;">Recent<br>Transactions</h2><br>
             <button class="tblbut">Add trasaction</button>
             <table>
-
                 <thead>
                     <tr>
                         <th style="width: 600px;">Title</th>
+                        <th style="width: 100px;">Type</th>
                         <th style="width: 100px;">Category</th>
                         <th style="width: 100px;">Date</th>
                         <th style="width: 100px;">Amount</th>

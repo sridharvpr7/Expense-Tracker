@@ -36,6 +36,11 @@ function closeForms() {
 function addincome() {
   addamount = Number(document.getElementById("incomeamount").value);
 
+  if (addamount < 0 || addamount == "") {
+    alert("Enter a valid amount🤬")
+    return;
+  }
+
   localaddamount = Number(localStorage.getItem("inamount")) || 0;
   localaddamount += addamount;
 
@@ -60,15 +65,27 @@ function addincome() {
   updaterange();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 function addexpense() {
   removeamount = Number(document.getElementById("examount").value);
 
+  if (removeamount < 0 || removeamount == "") {
+    alert("Enter a valid amount🤬")
+    return;
+  }
+
+
   localexamount = Number(localStorage.getItem("examount")) || 0;
   localexamount += removeamount;
 
   let tb = Number(localStorage.getItem("totalbalance")) || 0;
+
+  if (removeamount > tb) {
+    alert("Insufficient Balance");
+    return;
+  }
   let redtotal = tb - removeamount;
 
   localStorage.setItem("examount", localexamount);
@@ -85,12 +102,13 @@ function addexpense() {
   const formE = document.getElementById("expenseform");
   const formI = document.getElementById("incomeform");
   const formS = document.getElementById("saveform");
-  i
+
   updaterange();
   updateBudget();
   updatebudgetrange();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 
@@ -98,11 +116,27 @@ function addsaving() {
 
   saveamount = Number(document.getElementById("saveamount").value);
 
+  if (saveamount < 0 || saveamount == "") {
+    alert("Enter a valid amount🤬")
+    return;
+  }
+
+
+  let tb = Number(localStorage.getItem("totalbalance")) || 0;
+  if (saveamount > tb) {
+    alert("Insufficient Balance");
+    return;
+  }
+  let redtotal = tb - saveamount;
+
   localsaveamount = Number(localStorage.getItem("saveamount")) || 0;
   localsaveamount += saveamount;
 
-  let tb = Number(localStorage.getItem("totalbalance")) || 0;
-  let redtotal = tb - saveamount;
+  let tbb = Number(localStorage.getItem("totalbalance")) || 0;
+  if (saveamount > tb) {
+    alert("Insufficient Balance");
+    return;
+  }
 
   localStorage.setItem("saveamount", localsaveamount);
   localStorage.setItem("totalbalance", redtotal);
@@ -124,6 +158,7 @@ function addsaving() {
   updatebudgetrange();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 window.onload = function () {
@@ -149,6 +184,7 @@ window.onload = function () {
   renderGoals();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 function resetdata() {
@@ -190,6 +226,9 @@ function resetdata() {
 
   renderGoals();
   updateBudget();
+  loadChart1();
+  loadChart2();
+  loadChart3();
 }
 
 function updaterange() {
@@ -231,11 +270,16 @@ function addincometotable() {
   let date = document.getElementById("indate").value;
   const amount = document.getElementById("incomeamount").value;
 
+  if (amount < 0 || amount == "") {
+    return;
+  }
+
   let table = document.getElementById("transactions");
   let row = table.insertRow();
 
   row.innerHTML = `
 <td data-type="income" style="border:green 2px solid;">${title}</td>
+<td style="border:green 2px solid;">${"Income"}</td>
 <td style="border:green 2px solid;">${category}</td>
 <td style="border:green 2px solid;">${date}</td>
 <td data-amount="${amount}" style="color:green;border:green 2px solid;">₹${amount}</td>
@@ -255,11 +299,22 @@ function addexpensetotable() {
   let date = document.getElementById("exdate").value;
   const amount = document.getElementById("examount").value;
 
+  let tb = Number(localStorage.getItem("totalbalance")) || 0;
+
+  if (amount > tb) {
+    return;
+  }
+
+  if (amount < 0 || amount == "") {
+    return;
+  }
+
   let table = document.getElementById("transactions");
   let row = table.insertRow();
 
   row.innerHTML = `
 <td data-type="expense" style="border:red 2px solid;">${title}</td>
+<td style="border:red 2px solid;">${"Expense"}</td>
 <td style="border:red 2px solid;">${category}</td>
 <td style="border:red 2px solid;">${date}</td>
 <td data-amount="${amount}" style="color:red;border:red 2px solid;">-₹${amount}</td>
@@ -278,11 +333,22 @@ function addsavetotable() {
   let date = document.getElementById("savedate").value;
   const amount = document.getElementById("saveamount").value;
 
+  let tb = Number(localStorage.getItem("totalbalance")) || 0;
+
+  if (amount > tb) {
+    return;
+  }
+
+  if (amount < 0 || amount == "") {
+    return;
+  }
+
   let table = document.getElementById("transactions");
   let row = table.insertRow();
 
   row.innerHTML = `
 <td data-type="saving" style="border:blue 2px solid;">${title}</td>
+<td style="border:blue 2px solid;">${"Saving"}</td>
 <td style="border:blue 2px solid;">${category}</td>
 <td style="border:blue 2px solid;">${date}</td>
 <td data-amount="${amount}" style="color:blue;border:blue 2px solid;">₹${amount}</td>
@@ -309,7 +375,7 @@ function deletetransaction(btn) {
     row.cells[0].dataset.type;
 
   let amount =
-    Number(row.cells[3].dataset.amount);
+    Number(row.cells[4].dataset.amount);
 
   let balance =
     Number(localStorage.getItem("totalbalance")) || 0;
@@ -324,6 +390,11 @@ function deletetransaction(btn) {
     Number(localStorage.getItem("saveamount")) || 0;
 
   if (type === "income") {
+
+    if (balance < amount) {
+      alert("Cannot delete. Balance is already used.");
+      return;
+    }
 
     income -= amount;
     balance -= amount;
@@ -355,7 +426,7 @@ function deletetransaction(btn) {
       JSON.parse(localStorage.getItem("goals")) || [];
 
     let goalName =
-      row.cells[1].innerText;
+      row.cells[2].innerText;
 
     goals.forEach(goal => {
 
@@ -405,6 +476,7 @@ function deletetransaction(btn) {
   updateBudget();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 function savebudget() {
@@ -417,6 +489,7 @@ function savebudget() {
   document.getElementById("budgetamount").value = "";
 
   updateBudget();
+  loadChart3();
 }
 
 function updateBudget() {
@@ -435,12 +508,11 @@ function updateBudget() {
 
   const used = expense + saving + goalAmount;
 
+  let percentt = (used / budget) * 100;
+
   const remaining = Math.max(0, budget - used);
 
-  
-
-
-    if (expense > budget) {
+  if (percentt > budget) {
 
     let overspent = used - budget;
 
@@ -450,19 +522,19 @@ function updateBudget() {
     document.getElementById("budgetstatus").style.color =
       "red";
 
-  }else if (expense>=75) {
+  } else if (percentt >= 75) {
     document.getElementById("budgetstatus").innerHTML =
       `danger 💣`;
 
     document.getElementById("budgetstatus").style.color =
       "red";
-  } else if (expense>=50) {
+  } else if (percentt >= 50) {
     document.getElementById("budgetstatus").innerHTML =
       `warning ⚠️`;
 
     document.getElementById("budgetstatus").style.color =
       "red";
-  } 
+  }
   else {
 
     document.getElementById("budgetstatus").innerHTML =
@@ -471,11 +543,6 @@ function updateBudget() {
     document.getElementById("budgetstatus").style.color =
       "green";
   }
-
-
-
-
-  
 
   document.getElementById("showbudget").textContent = budget;
   document.getElementById("remainbudget").textContent = remaining;
@@ -511,6 +578,10 @@ function budgetreset() {
 
   document.getElementById("budmeter").value = 0;
   document.getElementById("budper").innerHTML = "0%";
+  document.getElementById("budgetstatus").innerHTML =
+    "Safe ✅";
+
+  loadChart3();
 }
 
 function updatebudgetrange() {
@@ -572,8 +643,10 @@ function renderGoals() {
 
   goals.forEach(goal => {
 
-    let required =
-      goal.target - goal.received;
+    let required = Math.max(
+      0,
+      goal.target - goal.received
+    );
 
     let percent =
       (goal.received / goal.target) * 100;
@@ -696,7 +769,24 @@ function depositGoal(id) {
 
     if (goal.id === id) {
 
+      let remaining =
+        goal.target - goal.received;
+
+      if (remaining <= 0) {
+        alert("Goal already completed 🎉");
+        return;
+      }
+
+      if (deposit > remaining) {
+        deposit = remaining;
+      }
+
       goal.received += deposit;
+
+      if (goal.received >= goal.target) {
+        goal.received = goal.target;
+        alert("🎉 Goal Completed!");
+      }
 
       goalName = goal.name;
 
@@ -717,6 +807,9 @@ function depositGoal(id) {
     JSON.stringify(goals)
   );
 
+
+
+
   // Add transaction row
   let table =
     document.getElementById("transactions");
@@ -728,25 +821,12 @@ function depositGoal(id) {
     new Date().toISOString().split("T")[0];
 
   row.innerHTML = `
-    <td data-type="goal" style="border:orange 2px solid;">
-      Goal Deposit
-    </td>
-    <td style="border:orange 2px solid;">
-      ${goalName}
-    </td>
-    <td style="border:orange 2px solid;">
-      ${today}
-    </td>
-    <td data-amount="${deposit}"
-        style="color:orange;border:orange 2px solid;">
-      -₹${deposit}
-    </td>
-    <td>
-      <button class="deletebtn"
-      onclick="deletetransaction(this)">
-        Delete
-      </button>
-    </td>`;
+    <td data-type="goal" style="border:orange 2px solid;">Goal Deposit</td>
+    <td style="border:orange 2px solid;">${"Goal"}</td>
+    <td style="border:orange 2px solid;">${goalName}</td>
+    <td style="border:orange 2px solid;">${today}</td>
+    <td data-amount="${deposit}"style="color:orange;border:orange 2px solid;">₹${deposit}</td>
+    <td><button class="deletebtn"onclick="deletetransaction(this)">Delete</button></td>`;
 
   transsavelocalstorage();
 
@@ -755,6 +835,7 @@ function depositGoal(id) {
   updaterange();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 function deleteGoal(id) {
@@ -797,6 +878,7 @@ function deleteGoal(id) {
   updaterange();
   loadChart1();
   loadChart2();
+  loadChart3();
 }
 
 function loadChart1() {
@@ -819,7 +901,12 @@ function loadChart1() {
       }]
     },
     options: {
-      responsive: true
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
     }
   });
 }
@@ -836,18 +923,105 @@ function loadChart2() {
   }
 
   chart2 = new Chart(document.getElementById("chart2"), {
-    type: "line",
+    type: "bar",
     data: {
       labels: ["Income", "expense", "Saving", "balance"],
       datasets: [{
         label: 'Money flow (₹)',
         data: [income, expense, saving, balance],
-        backgroundColor: ['yellow'],
+        backgroundColor: ['green', 'red', 'blue', 'black'],
+        color: ['yellow'],
         borderColor: "black",
       }]
     },
     options: {
-      responsive: true
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
     }
   });
+}
+
+let chart3;
+
+function loadChart3() {
+
+  let budget =
+    Number(localStorage.getItem("budget")) || 0;
+
+  let expense =
+    Number(localStorage.getItem("examount")) || 0;
+
+  let saving =
+    Number(localStorage.getItem("saveamount")) || 0;
+
+  let goals =
+    JSON.parse(localStorage.getItem("goals")) || [];
+
+  let goalAmount = 0;
+
+  goals.forEach(goal => {
+    goalAmount += Number(goal.received) || 0;
+  });
+
+  let used =
+    expense + saving + goalAmount;
+
+  let remaining =
+    Math.max(0, budget - used);
+
+  let percent =
+    budget > 0
+      ? ((used / budget) * 100).toFixed(1)
+      : 0;
+
+  if (chart3) {
+    chart3.destroy();
+  }
+
+  chart3 = new Chart(
+    document.getElementById("chart3"),
+    {
+      type: "doughnut",
+
+      data: {
+        labels: [
+          "Used Budget",
+          "Remaining Budget"
+        ],
+
+        datasets: [{
+          data: [
+            used,
+            remaining
+          ],
+
+          backgroundColor: [
+            "red",
+            "green"
+          ]
+        }]
+      },
+
+      options: {
+
+        responsive: true,
+
+        plugins: {
+
+          title: {
+            display: true,
+            text: `Budget Used ${percent}%`
+          },
+
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    }
+  );
 }

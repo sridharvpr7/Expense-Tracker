@@ -4,7 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -41,12 +41,12 @@ body {
 .dashboard {
     display: flex;
     justify-content: space-between;
-    margin: 30px;
+    margin: 20px;
     position: relative;
 }
 
 .dcard {
-    width: 400px;
+    width: 450px;
     height: 130px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -146,7 +146,7 @@ tr:hover {
     margin-top: 55px;
 }
 
-.actionbtn:active{
+.actionbtn:active {
     scale: 0.9;
 }
 
