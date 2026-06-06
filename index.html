@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="extrack.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -65,14 +66,11 @@
         <div class="action">
             <div class="form">
 
-                <div class="guidtransaction" id="guidtransaction">
-                    ADD<br>TRANSACTION
-                </div>
 
-                <div class="incomeform" id="incomeform" style="background-color: rgb(90, 241, 44);">
+                <div class="incomeform" id="incomeform" style="background-color: white;">
                     <p class="formtitle">Title<button
                             style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: rgb(90, 241, 44);;margin-left: 330px;"
-                            onclick="incomebtn()">X</button></p>
+                            onclick="closeForms()">X</button></p>
                     </p>
                     <input type="text" placeholder="Enter a income detile" style="border: rgb(90, 241, 44) 1px solid;"
                         id="intitle">
@@ -80,10 +78,12 @@
                     <p class="formtitle">Category</p>
                     <select style="border: rgb(90, 241, 44) 1px solid; width: 385px;" id="incategory">
                         <option>select</option>
-                        <option>food</option>
-                        <option>trnspoart</option>
+                        <option>salary</option>
+                        <option>freelancing</option>
                         <option>invertsment</option>
-                        <option>others</option>
+                        <option>bounes</option>
+                        <option>reward</option>
+                        <option>gifts</option>
                     </select>
 
                     <p class="formtitle">Date</p>
@@ -98,10 +98,10 @@
                 </div>
 
 
-                <div class="expenseform" id="expenseform" style="background-color: rgb(236, 52, 52);">
+                <div class="expenseform" id="expenseform" style="background-color: white;">
                     <p class="formtitle">Title <button
                             style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: red; margin-left: 320px;"
-                            onclick="expensebtn()">X</button></p>
+                            onclick="closeForms()">X</button></p>
 
                     <input type="text" placeholder="Enter a saving detile" style="border: rgb(236, 52, 52) 1px solid;"
                         id="extitle">
@@ -110,9 +110,11 @@
                     <select style="border: rgb(236, 52, 52) 1px solid; width: 385px;" id="excategory">
                         <option>select</option>
                         <option>food</option>
-                        <option>trnspoar t</option>
+                        <option>trnspoart</option>
                         <option>invertsment</option>
-                        <option>others</option>
+                        <option>clothes</option>
+                        <option>fashion</option>
+                        <option></option>
                     </select>
 
                     <p class="formtitle">Date</p>
@@ -127,11 +129,11 @@
                 </div>
 
 
-                <div class="saveform" id="saveform" style="background-color: blue;">
+                <div class="saveform" id="saveform" style="background-color: white;">
 
                     <p class="formtitle">Title<button
                             style="width: 25px; height: 25px;border-radius: 5px; border: 1px black solid;background-color: black;color: green;margin-left: 330px;"
-                            onclick="savebtn()">X</button></p>
+                            onclick="closeForms()">X</button></p>
                     </p>
                     <input type="text" placeholder="Enter a income detile" style="border: blue 1px solid;"
                         id="savetitle">
@@ -152,7 +154,7 @@
                     <input type="number" placeholder="enter a amount" id="saveamount" style="border: blue 1px solid;">
 
                     <button class="formbtn" onclick="addsavetotable(); addsaving();"
-                        style="background-color: blue ; margin-left: 152.25px">Add income</button>
+                        style="background-color: blue ; margin-left: 152.25px">Add saving</button>
                 </div>
 
             </div>
@@ -162,7 +164,7 @@
                 style="background-color: red; border: 1px red solid;">expense</button> <br>
             <button class="actionbtn" id="actionbtnS" onclick="savebtn()"
                 style="background-color: blue; border: 1px blue solid;">Savings</button> <br>
-            <button class="actionbtn" id="actionbtnA"
+            <button class="actionbtn" id="actionbtnA"  onclick="location.href='#anger'"
                 style="background-color: rgb(161, 204, 42); border: 1px rgb(161, 204, 42) solid;">Analytics</button>
             <br>
         </div>
@@ -211,9 +213,10 @@
                 Remaining: ₹<span id="remainbudget">0</span>
             </h3>
 
-            <p id="budper" style=" position: absolute; top: 180px; left: 400px;">0%</p>
+            <p id="budper" style=" position: absolute; top: 180px; left: 380px;">₹0/₹0 0%</p>
             <input type="range" min="0" max="100" id="budmeter"
                 style="accent-color: rgb(248, 190, 102); pointer-events: none; width: 200px; position: absolute; top: 180px; left: 220px;">
+                <h3 id="budgetstatus" style="position: absolute;top: 210px;left: 240px;">statuse</h3>
         </div>
     </div>
 
@@ -223,11 +226,11 @@
 
     <div style="position: relative;">
         <div class="target">
+            <p style="position: absolute;font-family: cursive;font-size: 50px; top: 40%;left: 25%;">ADD GOALS</p>
             <div style="display: flex; justify-content: space-between;">
-               <h3>Goals</h3> <button class="goalbut" id="goalbut" onclick="addgoal()">Add goal</button>
+                <h3>Goals</h3> <button class="goalbut" id="goalbut" onclick="addgoal()">Add goal</button>
             </div>
             <div class="targets">
-                <p style="font-family: cursive; font-size: 50px; display: flex;justify-content: center; align-items: center;">ADD GOALS</p>
                 <table>
                     <tbody id="goalrange"></tbody>
                 </table>
@@ -255,6 +258,22 @@
                 </thead id="ls">
                 <tbody id="transactions"></tbody>
             </table>
+        </div>
+    </div>
+
+    <!--Chart-->
+
+    <div style="display:flex; justify-content:space-between;" id="anger">
+        <div class="chart">
+            <canvas id="chart1"></canvas>
+        </div>
+
+        <div class="chart" style="height:500px">
+            <canvas id="chart2" height="500px" width="600px"></canvas>
+        </div>
+
+        <div class="chart">
+            <canvas id="chart3"></canvas>
         </div>
     </div>
 

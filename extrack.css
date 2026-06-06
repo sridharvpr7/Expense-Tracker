@@ -4,6 +4,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #e7ebff;
     position: relative;
@@ -142,6 +146,10 @@ tr:hover {
     margin-top: 55px;
 }
 
+.actionbtn:active{
+    scale: 0.9;
+}
+
 .form {
     width: 425px;
     height: 350px;
@@ -149,19 +157,6 @@ tr:hover {
     top: 20px;
     left: 300px;
     z-index: 2;
-}
-
-.guidtransaction {
-    height: 430px;
-    width: 405px;
-    margin: 10px;
-    font-family: cursive;
-    display: flex;
-    font-size: 30px;
-    text-align: center;
-    justify-content: center;
-    margin-top: 190px;
-    border-radius: 10px;
 }
 
 .incomeform {
@@ -172,6 +167,7 @@ tr:hover {
     margin: 10px;
     border-radius: 10px;
     display: none;
+    border: 3px rgb(61, 58, 58) dotted;
 }
 
 .expenseform {
@@ -181,7 +177,8 @@ tr:hover {
     width: 405px;
     margin: 10px;
     border-radius: 10px;
-    display: none;
+    border: 3px rgb(61, 58, 58) dotted;
+    display: block;
 }
 
 .saveform {
@@ -190,6 +187,7 @@ tr:hover {
     height: 430px;
     width: 405px;
     margin: 10px;
+    border: 3px rgb(61, 58, 58) dotted;
     border-radius: 10px;
     display: none;
 }
@@ -341,7 +339,7 @@ select {
     margin-left: 140px;
 }
 
-.budreset:active{
+.budreset:active {
     scale: 0.9;
 }
 
@@ -352,7 +350,7 @@ select {
     height: 220px;
     width: 30.25%;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     left: 1265px;
     top: 295px;
     padding: 20px;
@@ -360,25 +358,24 @@ select {
 
 .targets {
     text-align: center;
-    background-color: white;
-    overflow:auto;
+    background-color: transparent;
+    overflow: auto;
     height: 160px;
     width: 93.25%;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1);
     left: 1165px;
     top: 295px;
     padding: 20px;
     background: transparent;
 }
 
-.targets input{
+.targets input {
     margin-top: 50px;
     width: 490px;
     gap: 60px;
 }
 
-.goalbut{
+.goalbut {
     margin-top: 0px;
     width: 100px;
     height: 40px;
@@ -388,33 +385,33 @@ select {
     font-size: 15px;
 }
 
-.addbut:active{
+.addbut:active {
     scale: 0.9;
 }
 
-.goalbut:active{
+.goalbut:active {
     scale: 0.9;
 }
 
-.goaldeletebtn{
+.goaldeletebtn {
     height: 40px;
     width: 80px;
     background-color: red;
     border: black 2px solid;
     border-radius: 8px;
     position: absolute;
-    top:75px;
-    right:20px;
+    top: 75px;
+    right: 20px;
 }
 
-.goaldeletebtn:active{
+.goaldeletebtn:active {
     scale: 0.9;
 }
 
-.goaladdbtn{
+.goaladdbtn {
     position: absolute;
-    top:30px;
-    right:20px;
+    top: 30px;
+    right: 20px;
     right: 43px;
     width: 35px;
     height: 35px;
@@ -424,21 +421,16 @@ select {
     border: 1px black solid;
 }
 
-.goaladdbtn:active{
+.goaladdbtn:active {
     scale: 0.9;
 }
 
-.goalsetbtn{
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    width: 50px;
-    height: 20px;
-    border-radius: 5px;
-    background-color: orangered;
-    border: 1px black solid;
-}
-
-.goalsetbtn:active{
-    scale: 0.9;
+.chart {
+    background-color: white;
+    width: 600px;
+    height: 500px !important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 20px;
 }

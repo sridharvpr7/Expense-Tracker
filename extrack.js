@@ -5,83 +5,32 @@ let localaddamount = 0;
 let localexamount = 0;
 let localsaveamount = 0
 let redtotal = 0;
+let chart1;
+let chart2;
+
+function hideAllForms() {
+  document.getElementById("incomeform").style.display = "none";
+  document.getElementById("expenseform").style.display = "none";
+  document.getElementById("saveform").style.display = "none";
+}
 
 function incomebtn() {
-  const formI = document.getElementById("incomeform");
-  const formE = document.getElementById("expenseform");
-  const formS = document.getElementById("saveform");
-  if (formI.style.display === "block" || formE.style.display === "block" || formS.style.display === "block") {
-    formI.style.display = "none"
-    document.getElementById("guidtransaction").style.display = "block";
-
-    document.getElementById("actionbtnE").disabled = false;
-
-    document.getElementById("actionbtnS").disabled = false;
-
-    document.getElementById("actionbtnA").disabled = false;
-  }
-  else {
-    formI.style.display = "block"
-    document.getElementById("guidtransaction").style.display = "none";
-
-    document.getElementById("actionbtnE").disabled = true;
-
-    document.getElementById("actionbtnS").disabled = true;
-
-    document.getElementById("actionbtnA").disabled = true;
-  }
+  hideAllForms();
+  document.getElementById("incomeform").style.display = "block";
 }
 
 function expensebtn() {
-  const formE = document.getElementById("expenseform");
-  const formI = document.getElementById("incomeform");
-  const formS = document.getElementById("saveform");
-  if (formE.style.display === "block" || formI.style.display === "block" || formS.style.display === "block") {
-    formE.style.display = "none"
-    document.getElementById("guidtransaction").style.display = "block";
-
-    document.getElementById("actionbtnI").disabled = false;
-
-    document.getElementById("actionbtnS").disabled = false;
-
-    document.getElementById("actionbtnA").disabled = false;
-  }
-  else {
-    formE.style.display = "block"
-    document.getElementById("guidtransaction").style.display = "none";
-
-    document.getElementById("actionbtnI").disabled = true;
-
-    document.getElementById("actionbtnS").disabled = true;
-
-    document.getElementById("actionbtnA").disabled = true;
-  }
+  hideAllForms();
+  document.getElementById("expenseform").style.display = "block";
 }
 
 function savebtn() {
-  const formS = document.getElementById("saveform");
-  const formI = document.getElementById("incomeform");
-  const formE = document.getElementById("expenseform");
-  if (formI.style.display === "block" || formE.style.display === "block" || formS.style.display === "block") {
-    formS.style.display = "none"
-    document.getElementById("guidtransaction").style.display = "block";
+  hideAllForms();
+  document.getElementById("saveform").style.display = "block";
+}
 
-    document.getElementById("actionbtnI").disabled = false;
-
-    document.getElementById("actionbtnE").disabled = false;
-
-    document.getElementById("actionbtnA").disabled = false;
-  }
-  else {
-    formS.style.display = "block"
-    document.getElementById("guidtransaction").style.display = "none";
-
-    document.getElementById("actionbtnI").disabled = true;
-
-    document.getElementById("actionbtnE").disabled = true;
-
-    document.getElementById("actionbtnA").disabled = true;
-  }
+function closeForms() {
+  hideAllForms();
 }
 
 function addincome() {
@@ -107,39 +56,10 @@ function addincome() {
   const formI = document.getElementById("incomeform");
   const formE = document.getElementById("expenseform");
   const formS = document.getElementById("saveform");
-  if (formI.style.display === "block" || formE.style.display === "block" || formS.style.display === "block") {
-    formI.style.display = "none"
-    document.getElementById("guidtransaction").style.display = "block";
 
-    document.getElementById("actionbtnE").style.backgroundColor = "red"
-    document.getElementById("actionbtnE").style.border = "2px red solid"
-    document.getElementById("actionbtnE").disabled = false;
-
-    document.getElementById("actionbtnS").style.backgroundColor = "blue"
-    document.getElementById("actionbtnS").style.border = "2px blue solid"
-    document.getElementById("actionbtnS").disabled = false;
-
-    document.getElementById("actionbtnA").style.backgroundColor = "rgb(161, 204, 42)"
-    document.getElementById("actionbtnA").style.border = "2px rgb(161, 204, 42) solid"
-    document.getElementById("actionbtnA").disabled = false;
-  }
-  else {
-    formI.style.display = "block"
-    document.getElementById("guidtransaction").style.display = "none";
-
-    document.getElementById("actionbtnE").style.backgroundColor = "white"
-    document.getElementById("actionbtnE").style.border = "2px white solid"
-    document.getElementById("actionbtnE").disabled = true;
-
-    document.getElementById("actionbtnS").style.backgroundColor = "white"
-    document.getElementById("actionbtnS").style.border = "2px white solid"
-    document.getElementById("actionbtnS").disabled = true;
-
-    document.getElementById("actionbtnA").style.backgroundColor = "white"
-    document.getElementById("actionbtnA").style.border = "2px white solid"
-    document.getElementById("actionbtnA").disabled = true;
-  }
   updaterange();
+  loadChart1();
+  loadChart2();
 }
 
 function addexpense() {
@@ -165,40 +85,12 @@ function addexpense() {
   const formE = document.getElementById("expenseform");
   const formI = document.getElementById("incomeform");
   const formS = document.getElementById("saveform");
-  if (formE.style.display === "block" || formI.style.display === "block" || formS.style.display === "block") {
-    formE.style.display = "none"
-    document.getElementById("guidtransaction").style.display = "block";
-
-    document.getElementById("actionbtnI").style.backgroundColor = "green"
-    document.getElementById("actionbtnI").style.border = "2px green solid"
-    document.getElementById("actionbtnI").disabled = false;
-
-    document.getElementById("actionbtnS").style.backgroundColor = "blue"
-    document.getElementById("actionbtnS").style.border = "2px blue solid"
-    document.getElementById("actionbtnS").disabled = false;
-
-    document.getElementById("actionbtnA").style.backgroundColor = "rgb(161, 204, 42)"
-    document.getElementById("actionbtnA").style.border = "2px rgb(161, 204, 42) solid"
-    document.getElementById("actionbtnA").disabled = false;
-  }
-  else {
-    formE.style.display = "block"
-    document.getElementById("guidtransaction").style.display = "none";
-
-    document.getElementById("actionbtnI").style.backgroundColor = "white"
-    document.getElementById("actionbtnI").style.border = "2px white solid"
-    document.getElementById("actionbtnI").disabled = true;
-
-    document.getElementById("actionbtnS").style.backgroundColor = "white"
-    document.getElementById("actionbtnS").style.border = "2px white solid"
-    document.getElementById("actionbtnS").disabled = true;
-
-    document.getElementById("actionbtnA").style.backgroundColor = "white"
-    document.getElementById("actionbtnA").style.border = "2px white solid"
-    document.getElementById("actionbtnA").disabled = true;
-  }
+  i
   updaterange();
   updateBudget();
+  updatebudgetrange();
+  loadChart1();
+  loadChart2();
 }
 
 
@@ -218,44 +110,20 @@ function addsaving() {
   document.getElementById("saving").innerHTML = "₹" + localsaveamount;
   document.getElementById("balance").innerHTML = "₹" + redtotal;
 
+  document.getElementById("savetitle").value = "";
+  document.getElementById("savecategory").value = "";
+  document.getElementById("savedate").value = "";
   document.getElementById("saveamount").value = "";
 
   const formS = document.getElementById("saveform");
   const formI = document.getElementById("incomeform");
   const formE = document.getElementById("expenseform");
-  if (formI.style.display === "block" || formE.style.display === "block" || formS.style.display === "block") {
-    formS.style.display = "none"
-    document.getElementById("guidtransaction").style.display = "block";
 
-    document.getElementById("actionbtnI").style.backgroundColor = "green"
-    document.getElementById("actionbtnI").style.border = "2px green solid"
-    document.getElementById("actionbtnI").disabled = false;
-
-    document.getElementById("actionbtnE").style.backgroundColor = "red"
-    document.getElementById("actionbtnE").style.border = "2px red solid"
-    document.getElementById("actionbtnE").disabled = false;
-
-    document.getElementById("actionbtnA").style.backgroundColor = "rgb(161, 204, 42)"
-    document.getElementById("actionbtnA").style.border = "2px rgb(161, 204, 42) solid"
-    document.getElementById("actionbtnA").disabled = false;
-  }
-  else {
-    formS.style.display = "block"
-    document.getElementById("guidtransaction").style.display = "none";
-
-    document.getElementById("actionbtnI").style.backgroundColor = "white"
-    document.getElementById("actionbtnI").style.border = "2px white solid"
-    document.getElementById("actionbtnI").disabled = true;
-
-    document.getElementById("actionbtnE").style.backgroundColor = "white"
-    document.getElementById("actionbtnE").style.border = "2px white solid"
-    document.getElementById("actionbtnE").disabled = true;
-
-    document.getElementById("actionbtnA").style.backgroundColor = "white"
-    document.getElementById("actionbtnA").style.border = "2px white solid"
-    document.getElementById("actionbtnA").disabled = true;
-  }
   updaterange();
+  updateBudget();
+  updatebudgetrange();
+  loadChart1();
+  loadChart2();
 }
 
 window.onload = function () {
@@ -275,13 +143,12 @@ window.onload = function () {
   document.getElementById("transactions").innerHTML =
     localStorage.getItem("transactions") || "";
 
-  document.getElementById("goalrange").innerHTML =
-    localStorage.getItem("goalrange") || "";
-
   updaterange();
   updateBudget();
   updatebudgetrange();
   renderGoals();
+  loadChart1();
+  loadChart2();
 }
 
 function resetdata() {
@@ -308,9 +175,21 @@ function resetdata() {
   document.getElementById("rgbalance").value = 0;
   document.getElementById("rgexpense").value = 0;
   document.getElementById("rgsaving").value = 0;
+
+  document.getElementById("savper").innerHTML = "0%";
+  document.getElementById("expper").innerHTML = "0%";
+  document.getElementById("balper").innerHTML = "0%";
+
   document.getElementById("budmeter").value = 0;
 
-  document.getElementById("budper").value = 0;
+  document.getElementById("budper").innerHTML = "0%";
+
+  document.getElementById("budgetstatus").innerHTML =
+    "Safe ✅";
+
+
+  renderGoals();
+  updateBudget();
 }
 
 function updaterange() {
@@ -468,6 +347,36 @@ function deletetransaction(btn) {
     localStorage.setItem("saveamount", saving);
   }
 
+  else if (type === "goal") {
+
+    balance += amount;
+
+    let goals =
+      JSON.parse(localStorage.getItem("goals")) || [];
+
+    let goalName =
+      row.cells[1].innerText;
+
+    goals.forEach(goal => {
+
+      if (goal.name === goalName) {
+
+        goal.received -= amount;
+
+        if (goal.received < 0) {
+          goal.received = 0;
+        }
+      }
+    });
+
+    localStorage.setItem(
+      "goals",
+      JSON.stringify(goals)
+    );
+
+    renderGoals();
+  }
+
   localStorage.setItem(
     "totalbalance",
     balance
@@ -494,6 +403,8 @@ function deletetransaction(btn) {
 
   updaterange();
   updateBudget();
+  loadChart1();
+  loadChart2();
 }
 
 function savebudget() {
@@ -510,33 +421,84 @@ function savebudget() {
 
 function updateBudget() {
 
-  let budget = Number(localStorage.getItem("budget")) || 0;
-  let expense = Number(localStorage.getItem("examount")) || 0;
-  let savings = Number(localStorage.getItem("saveamount")) || 0;
+  const budget = Number(localStorage.getItem("budget")) || 0;
+  const expense = Number(localStorage.getItem("examount")) || 0;
+  const saving = Number(localStorage.getItem("saveamount")) || 0;
 
-  if (budget <= 0) {
-    document.getElementById("showbudget").innerHTML = "0";
-    document.getElementById("remainbudget").innerHTML = "0";
-    document.getElementById("budmeter").value = 0;
-    document.getElementById("budper").innerHTML = "0%";
-    return;
+  const goals = JSON.parse(localStorage.getItem("goals")) || [];
+
+  let goalAmount = 0;
+
+  goals.forEach(goal => {
+    goalAmount += Number(goal.received) || 0;
+  });
+
+  const used = expense + saving + goalAmount;
+
+  const remaining = Math.max(0, budget - used);
+
+  
+
+
+    if (expense > budget) {
+
+    let overspent = used - budget;
+
+    document.getElementById("budgetstatus").innerHTML =
+      `Over Budget ❌ ₹${overspent}`;
+
+    document.getElementById("budgetstatus").style.color =
+      "red";
+
+  }else if (expense>=75) {
+    document.getElementById("budgetstatus").innerHTML =
+      `danger 💣`;
+
+    document.getElementById("budgetstatus").style.color =
+      "red";
+  } else if (expense>=50) {
+    document.getElementById("budgetstatus").innerHTML =
+      `warning ⚠️`;
+
+    document.getElementById("budgetstatus").style.color =
+      "red";
+  } 
+  else {
+
+    document.getElementById("budgetstatus").innerHTML =
+      `Safe ✅`;
+
+    document.getElementById("budgetstatus").style.color =
+      "green";
   }
 
-  let used = expense + savings;
-  let remaining = budget - used;
 
-  document.getElementById("showbudget").innerHTML = budget;
-  document.getElementById("remainbudget").innerHTML = remaining;
 
-  let percentage = (used / budget) * 100;
 
-  if (percentage > 100) {
-    percentage = 100;
-  }
+  
 
-  document.getElementById("budmeter").value = percentage;
+  document.getElementById("showbudget").textContent = budget;
+  document.getElementById("remainbudget").textContent = remaining;
 
-  updatebudgetrange();
+  let percent = budget > 0 ? (used / budget) * 100 : 0;
+
+  document.getElementById("budmeter").value =
+    Math.min(percent, 100);
+
+  document.getElementById("budper").innerHTML =
+    percent.toFixed(1) + "%";
+}
+
+function getTotalGoalAmount() {
+  let goals = JSON.parse(localStorage.getItem("goals")) || [];
+
+  let total = 0;
+
+  goals.forEach(goal => {
+    total += goal.received;
+  });
+
+  return total;
 }
 
 function budgetreset() {
@@ -618,6 +580,11 @@ function renderGoals() {
 
     if (percent > 100) percent = 100;
 
+    let bgColor =
+      percent >= 100
+        ? "rgb(76, 175, 80)"
+        : "rgb(243, 106, 255)";
+
     let row = table.insertRow();
 
     row.innerHTML = `
@@ -626,10 +593,13 @@ function renderGoals() {
       border:black 2px solid;
       border-radius:8px;
       height:120px;
-      background-color: rgb(243, 106, 255);
+      background-color:${bgColor};
     ">
 
-      <h2 style="position:absolute;top:10px;left:10px;">
+      <h2 style="
+      position:absolute;
+      top:10px;
+      left:10px;">
         ${goal.name}
       </h2>
 
@@ -673,6 +643,17 @@ function renderGoals() {
       ${percent.toFixed(1)}%
       </h3>
 
+      ${percent >= 100
+        ? `<h3 style="
+            position:absolute;
+            top:60px;
+            left:180px;
+            color:white;">
+            ✅ Completed
+           </h3>`
+        : ""
+      }
+
       <button
       class="goaldeletebtn"
       onclick="deleteGoal(${goal.id})">
@@ -691,10 +672,12 @@ function renderGoals() {
 
 function depositGoal(id) {
 
-  let deposit =
-    Number(prompt("Enter Deposit Amount"));
+  let deposit = Number(prompt("Enter Deposit Amount"));
 
-  if (!deposit) return;
+  if (!deposit || deposit <= 0) {
+    alert("Enter valid amount");
+    return;
+  }
 
   let balance =
     Number(localStorage.getItem("totalbalance")) || 0;
@@ -707,11 +690,15 @@ function depositGoal(id) {
   let goals =
     JSON.parse(localStorage.getItem("goals")) || [];
 
+  let goalName = "";
+
   goals.forEach(goal => {
 
     if (goal.id === id) {
 
       goal.received += deposit;
+
+      goalName = goal.name;
 
       balance -= deposit;
 
@@ -720,8 +707,8 @@ function depositGoal(id) {
         balance
       );
 
-      document.getElementById("balance")
-        .innerHTML = "₹" + balance;
+      document.getElementById("balance").innerHTML =
+        "₹" + balance;
     }
   });
 
@@ -730,7 +717,44 @@ function depositGoal(id) {
     JSON.stringify(goals)
   );
 
+  // Add transaction row
+  let table =
+    document.getElementById("transactions");
+
+  let row =
+    table.insertRow();
+
+  let today =
+    new Date().toISOString().split("T")[0];
+
+  row.innerHTML = `
+    <td data-type="goal" style="border:orange 2px solid;">
+      Goal Deposit
+    </td>
+    <td style="border:orange 2px solid;">
+      ${goalName}
+    </td>
+    <td style="border:orange 2px solid;">
+      ${today}
+    </td>
+    <td data-amount="${deposit}"
+        style="color:orange;border:orange 2px solid;">
+      -₹${deposit}
+    </td>
+    <td>
+      <button class="deletebtn"
+      onclick="deletetransaction(this)">
+        Delete
+      </button>
+    </td>`;
+
+  transsavelocalstorage();
+
   renderGoals();
+  updateBudget();
+  updaterange();
+  loadChart1();
+  loadChart2();
 }
 
 function deleteGoal(id) {
@@ -769,4 +793,61 @@ function deleteGoal(id) {
   );
 
   renderGoals();
+  updateBudget();
+  updaterange();
+  loadChart1();
+  loadChart2();
+}
+
+function loadChart1() {
+
+  let income = Number(localStorage.getItem("inamount")) || 0;
+  let expense = Number(localStorage.getItem("examount")) || 0;
+  let saving = Number(localStorage.getItem("saveamount")) || 0;
+
+  if (chart1) {
+    chart1.destroy();
+  }
+
+  chart1 = new Chart(document.getElementById("chart1"), {
+    type: "pie",
+    data: {
+      labels: ["Income", "Expense", "Savings"],
+      datasets: [{
+        data: [income, expense, saving],
+        backgroundColor: ['green', 'red', 'blue']
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+}
+
+function loadChart2() {
+
+  let income = Number(localStorage.getItem("inamount")) || 0;
+  let expense = Number(localStorage.getItem("examount")) || 0;
+  let saving = Number(localStorage.getItem("saveamount")) || 0;
+  let balance = Number(localStorage.getItem("totalbalance")) || 0;
+
+  if (chart2) {
+    chart2.destroy();
+  }
+
+  chart2 = new Chart(document.getElementById("chart2"), {
+    type: "line",
+    data: {
+      labels: ["Income", "expense", "Saving", "balance"],
+      datasets: [{
+        label: 'Money flow (₹)',
+        data: [income, expense, saving, balance],
+        backgroundColor: ['yellow'],
+        borderColor: "black",
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
 }
