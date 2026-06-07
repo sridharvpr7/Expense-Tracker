@@ -163,6 +163,18 @@ function addsaving() {
 
 window.onload = function () {
 
+  if (!localStorage.getItem("username")) {
+    localStorage.setItem("username", "admin");
+  }
+
+  if (!localStorage.getItem("password")) {
+    localStorage.setItem("password", "1234");
+  }
+
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+    showLogin();
+  }
+
   document.getElementById("income").innerHTML =
     "₹" + (localStorage.getItem("inamount") || 0);
 
@@ -178,6 +190,23 @@ window.onload = function () {
   document.getElementById("transactions").innerHTML =
     localStorage.getItem("transactions") || "";
 
+  let theme = localStorage.getItem("theme");
+
+  if (theme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+    document.getElementById("dark").style.display = "none";
+    document.getElementById("light").style.display = "inline";
+
+  } else {
+
+    document.body.classList.remove("dark-mode");
+
+    document.getElementById("light").style.display = "none";
+    document.getElementById("dark").style.display = "inline";
+  }
+
   updaterange();
   updateBudget();
   updatebudgetrange();
@@ -185,7 +214,7 @@ window.onload = function () {
   loadChart1();
   loadChart2();
   loadChart3();
-}
+};
 
 function resetdata() {
   localStorage.removeItem("inamount");
@@ -221,8 +250,10 @@ function resetdata() {
   document.getElementById("budper").innerHTML = "0%";
 
   document.getElementById("budgetstatus").innerHTML =
-    "Safe ✅";
+    "Set Budget First 📌";
 
+  document.getElementById("budgetstatus").style.color =
+    "orange";
 
   renderGoals();
   updateBudget();
@@ -494,6 +525,25 @@ function savebudget() {
 
 function updateBudget() {
 
+  const budgett = Number(localStorage.getItem("budget")) || 0;
+
+  if (budgett <= 0) {
+
+    document.getElementById("showbudget").textContent = 0;
+    document.getElementById("remainbudget").textContent = 0;
+
+    document.getElementById("budmeter").value = 0;
+    document.getElementById("budper").innerHTML = "0%";
+
+    document.getElementById("budgetstatus").innerHTML =
+      "Set Budget First 📌";
+
+    document.getElementById("budgetstatus").style.color =
+      "orange";
+
+    return;
+  }
+
   const budget = Number(localStorage.getItem("budget")) || 0;
   const expense = Number(localStorage.getItem("examount")) || 0;
   const saving = Number(localStorage.getItem("saveamount")) || 0;
@@ -579,7 +629,10 @@ function budgetreset() {
   document.getElementById("budmeter").value = 0;
   document.getElementById("budper").innerHTML = "0%";
   document.getElementById("budgetstatus").innerHTML =
-    "Safe ✅";
+    "Set Budget First 📌";
+
+  document.getElementById("budgetstatus").style.color =
+    "orange";
 
   loadChart3();
 }
@@ -764,13 +817,13 @@ function depositGoal(id) {
     JSON.parse(localStorage.getItem("goals")) || [];
 
   let goalName = "";
+  let deposited = false;
 
   goals.forEach(goal => {
 
     if (goal.id === id) {
 
-      let remaining =
-        goal.target - goal.received;
+      let remaining = goal.target - goal.received;
 
       if (remaining <= 0) {
         alert("Goal already completed 🎉");
@@ -782,6 +835,7 @@ function depositGoal(id) {
       }
 
       goal.received += deposit;
+      deposited = true;
 
       if (goal.received >= goal.target) {
         goal.received = goal.target;
@@ -802,31 +856,30 @@ function depositGoal(id) {
     }
   });
 
+  // Goal completed already -> transaction add panna koodadhu
+  if (!deposited) {
+    return;
+  }
+
   localStorage.setItem(
     "goals",
     JSON.stringify(goals)
   );
 
+  let table = document.getElementById("transactions");
 
-
-
-  // Add transaction row
-  let table =
-    document.getElementById("transactions");
-
-  let row =
-    table.insertRow();
+  let row = table.insertRow();
 
   let today =
     new Date().toISOString().split("T")[0];
 
   row.innerHTML = `
     <td data-type="goal" style="border:orange 2px solid;">Goal Deposit</td>
-    <td style="border:orange 2px solid;">${"Goal"}</td>
+    <td style="border:orange 2px solid;">Goal</td>
     <td style="border:orange 2px solid;">${goalName}</td>
     <td style="border:orange 2px solid;">${today}</td>
-    <td data-amount="${deposit}"style="color:orange;border:orange 2px solid;">₹${deposit}</td>
-    <td><button class="deletebtn"onclick="deletetransaction(this)">Delete</button></td>`;
+    <td data-amount="${deposit}" style="color:orange;border:orange 2px solid;">₹${deposit}</td>
+    <td><button class="deletebtn" onclick="deletetransaction(this)">Delete</button></td>`;
 
   transsavelocalstorage();
 
@@ -837,7 +890,6 @@ function depositGoal(id) {
   loadChart2();
   loadChart3();
 }
-
 function deleteGoal(id) {
 
   if (!confirm("Delete this goal and return saved money to balance?")) {
@@ -1025,3 +1077,122 @@ function loadChart3() {
     }
   );
 }
+
+function dark() {
+
+  document.body.classList.add("dark-mode");
+
+  document.getElementById("dark").style.display = "none";
+  document.getElementById("light").style.display = "inline";
+
+  localStorage.setItem("theme", "dark");
+}
+
+function light() {
+
+  document.body.classList.remove("dark-mode");
+
+  document.getElementById("light").style.display = "none";
+  document.getElementById("dark").style.display = "inline";
+
+  localStorage.setItem("theme", "light");
+}
+
+
+
+
+
+function showLogin() {
+
+  document.getElementById("loginModal").style.display =
+    "block";
+}
+
+function closeLogin() {
+
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+
+    alert("Please Login First 🔒");
+    return;
+  }
+
+  document.getElementById("loginModal").style.display = "none";
+}
+
+function loginUser() {
+
+  let user = document.getElementById("loginUser").value;
+  let pass = document.getElementById("loginPass").value;
+
+  if (
+    user === localStorage.getItem("username") &&
+    pass === localStorage.getItem("password")
+  ) {
+
+    sessionStorage.setItem("loggedIn", "true");
+
+    closeLogin();
+
+    alert("Login Successful ✅");
+
+  } else {
+
+    alert("Wrong Username or Password ❌");
+
+  }
+}
+
+function logoutUser() {
+
+  sessionStorage.removeItem("loggedIn");
+
+  document.getElementById("loginModal").style.display =
+    "block";
+
+  alert("Logged Out");
+}
+
+function changeCredentials() {
+
+  let currentUser =
+    prompt("Current Username");
+
+  let currentPass =
+    prompt("Current Password");
+
+  if (
+    currentUser !== localStorage.getItem("username") ||
+    currentPass !== localStorage.getItem("password")
+  ) {
+
+    alert("Wrong Current Credentials");
+    return;
+  }
+
+  let newUser =
+    prompt("New Username");
+
+  let newPass =
+    prompt("New Password");
+
+  if (!newUser || !newPass) {
+    alert("Invalid Input");
+    return;
+  }
+
+  localStorage.setItem(
+    "username",
+    newUser
+  );
+
+  localStorage.setItem(
+    "password",
+    newPass
+  );
+
+  alert("Credentials Updated ✅");
+}
+
+window.addEventListener("beforeunload", function () {
+  sessionStorage.removeItem("loggedIn");
+});
