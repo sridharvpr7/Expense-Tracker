@@ -892,7 +892,7 @@ function depositGoal(id) {
 }
 function deleteGoal(id) {
 
-  if (!confirm("Delete this goal and return saved money to balance?")) {
+  if (!confirm("Delete this goal ?")) {
     return;
   }
 
@@ -900,23 +900,7 @@ function deleteGoal(id) {
     JSON.parse(localStorage.getItem("goals")) || [];
 
   let deletedGoal =
-    goals.find(goal => goal.id === id);
-
-  if (deletedGoal) {
-
-    let balance =
-      Number(localStorage.getItem("totalbalance")) || 0;
-
-    balance += deletedGoal.received;
-
-    localStorage.setItem(
-      "totalbalance",
-      balance
-    );
-
-    document.getElementById("balance").innerHTML =
-      "₹" + balance;
-  }
+    goals.find(goal => goal.id === id);  
 
   goals = goals.filter(goal => goal.id !== id);
 
